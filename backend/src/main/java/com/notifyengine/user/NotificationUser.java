@@ -52,6 +52,10 @@ public class NotificationUser {
     private String phone;
     private String fcmToken;
 
+    @Column(name = "password")
+    @Builder.Default
+    private String password = "NA";
+
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
