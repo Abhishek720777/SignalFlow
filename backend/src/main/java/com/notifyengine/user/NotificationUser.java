@@ -56,6 +56,10 @@ public class NotificationUser {
     @Builder.Default
     private String password = "NA";
 
+    @Column(name = "username")
+    @Builder.Default
+    private String username = "NA";
+
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
