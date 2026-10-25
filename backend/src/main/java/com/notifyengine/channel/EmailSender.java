@@ -59,12 +59,10 @@ public class EmailSender {
                     log.info("Email sent successfully via Resend to {}", job.getTo());
                     return "Success";
                 } else {
-                    log.error("Failed to send email via Resend: {}", response.getBody());
-                    return "Resend Error: " + response.getBody();
+                    log.warn("Resend rejected email ({}): {}. Falling back to standard SMTP...", response.getStatusCode(), response.getBody());
                 }
             } catch (Exception e) {
-                log.error("Failed to send email via Resend to {}: {}", job.getTo(), e.getMessage());
-                return "Resend Connection Error: " + e.getMessage();
+                log.warn("Resend request failed: {}. Falling back to standard SMTP...", e.getMessage());
             }
         }
 

@@ -41,7 +41,7 @@ public class NotificationRequest {
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id", nullable = true)
     private NotificationUser user;
 
     @Column(name = "event_name", nullable = false)

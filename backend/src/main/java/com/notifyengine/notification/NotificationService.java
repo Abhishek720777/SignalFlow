@@ -87,13 +87,20 @@ public class NotificationService {
             request.setPayload("{}");
         }
         
-        // Find user - if not found, we mark as FAILED
+        // Find user - if not found, auto-provision user from payload data or externalUserId
         NotificationUser user = userRepository.findByClientIdAndExternalUserId(client.getId(), externalUserId).orElse(null);
         if (user == null) {
-            request.setStatus("FAILED");
-            requestRepository.save(request);
-            log.error("User not found for externalId: {}", externalUserId);
-            return;
+            String recipientEmail = (data != null && data.containsKey("email")) ? (String) data.get("email") : null;
+            if (recipientEmail == null && externalUserId != null && externalUserId.contains("@")) {
+                recipientEmail = externalUserId;
+            }
+            log.info("Auto-provisioning user for externalUserId: {} with email: {}", externalUserId, recipientEmail);
+            user = NotificationUser.builder()
+                    .client(client)
+                    .externalUserId(externalUserId != null ? externalUserId : "anonymous")
+                    .email(recipientEmail)
+                    .build();
+            user = userRepository.save(user);
         }
         
         request.setUser(user);
