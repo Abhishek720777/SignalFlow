@@ -51,7 +51,7 @@ jwt:
 
 brevo:
   api-key: ${BREVO_API_KEY:}
-  from-email: ${BREVO_FROM_EMAIL:abhishekpoojar69@gmail.com}
+  from-email: ${BREVO_FROM_EMAIL:abhishekpoojary720@gmail.com}
   from-name: ${BREVO_FROM_NAME:SignalFlow}
 
 resend:

@@ -25,7 +25,7 @@ public class EmailSender {
     @Value("${brevo.api-key:}")
     private String brevoApiKey;
 
-    @Value("${brevo.from-email:abhishekpoojar69@gmail.com}")
+    @Value("${brevo.from-email:abhishekpoojary720@gmail.com}")
     private String brevoFromEmail;
 
     @Value("${brevo.from-name:SignalFlow}")
