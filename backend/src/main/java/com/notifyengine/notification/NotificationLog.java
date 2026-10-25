@@ -34,7 +34,7 @@ public class NotificationLog {
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "request_id", nullable = false)
+    @JoinColumn(name = "request_id", nullable = true)
     private NotificationRequest request;
 
     @Column(nullable = false)
