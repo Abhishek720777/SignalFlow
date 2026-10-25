@@ -49,6 +49,11 @@ jwt:
   secret: ${JWT_SECRET:changeme-changeme-changeme-changeme-changeme}
   expiration: 86400000
 
+brevo:
+  api-key: ${BREVO_API_KEY:}
+  from-email: ${BREVO_FROM_EMAIL:abhishekpoojar69@gmail.com}
+  from-name: ${BREVO_FROM_NAME:SignalFlow}
+
 resend:
   api-key: ${RESEND_API_KEY:}
   from-email: ${RESEND_FROM_EMAIL:onboarding@resend.dev}
